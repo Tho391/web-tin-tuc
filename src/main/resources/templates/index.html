@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>News</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+    integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous" />
+  <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
+</head>
+
+<body>
+  <div class="header">
+    <div class="content">
+      <th:block th:include="/header"></th:block>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="content">
+      <main>
+      	<a th:href="@{/}" class="logo">
+          <i><b>EXAMPLE</b></i><span><b> NEWS</b></span>
+        </a>
+
+        <nav>
+          <a href="#">News</a>
+          <a href="#">World</a>
+          <a href="#">Business</a>
+          <a href="#">Entertainment</a>
+          <a href="#">Sport</a>
+          <a href="#">Education</a>
+          <a href="#">Travel</a>
+          <a href="#">Science</a>
+        </nav>
+
+        <div id="article">
+          <i><span class="article-date" th:utext="${latestArt.date}"></span></i>
+          <h3 class="article-title" th:utext="${latestArt.title}"></h3>
+          <div class="article-content" th:utext="${latestArt.content}"></div>
+          <i class="article-author" th:utext="${latestArt.author}"></i>
+        </div>
+
+        <div id="article-list">
+          <h3>News</h3>
+          <div class="article-item" th:each="article : ${articles}">
+            <i><p class="article-date" th:utext="${article.date}"></p></i>
+            <a th:href="@{/?id=} + ${article.id}" class="article-title" th:utext="${article.title}"></a>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="content">
+      <th:block th:include="/footer"></th:block>
+    </div>
+  </div>
+</body>
+
+</html>

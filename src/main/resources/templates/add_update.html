@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<title>Add article</title>
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+	crossorigin="anonymous" />
+
+<link
+	href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css"
+	rel="stylesheet" />
+<script
+	src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script
+	src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+
+<!-- include summernote css/js -->
+<link
+	href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.css"
+	rel="stylesheet" />
+<script
+	src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
+
+<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/add.css}" />
+</head>
+
+<body>
+	<div class="header">
+		<div class="content">
+			<th:block th:include="/header"></th:block>
+		</div>
+	</div>
+
+	<div class="main">
+		<div class="content">
+			<main> <th:block th:include="/logo"></th:block>
+
+			<div id="container">
+				<form method="POST" action="#" th:action="@{/admin/save}" th:object="${article}" novalidate="novalidate">
+					<br />
+						<input type="text" placeholder="Title" th:field="*{title}" th:errorclass="field-error"/> 
+						<em th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></em>
+					<br />
+					<br /> 
+						<input type="text" placeholder="Author" th:field="*{author}" th:errorclass="field-error" /> 
+						<em	th:if="${#fields.hasErrors('author')}" th:errors="*{author}"></em>
+					<br /> Content
+					<br />
+					<textarea id="summernote" name="editordata" th:field="*{content}"></textarea>
+					
+					<input type="hidden" th:field="*{id}"/>
+					
+					<input type="submit" value="Apply">
+				</form>
+				<script>
+					$(document).ready(function() {
+						$('#summernote').summernote();
+					});
+				</script>
+			</div>
+			</main>
+		</div>
+	</div>
+</body>
+
+</html>

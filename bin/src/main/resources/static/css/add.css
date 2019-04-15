@@ -1,0 +1,20 @@
+#container {
+  padding-top: 20px;
+}
+
+#container input[type="text"] {
+  width: 300px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #bbb;
+  margin-bottom: 20px;
+}
+
+#container input[type="submit"] {
+  padding: 8px 14px;
+  font-size: 0.95rem;
+  border-radius: 5px;
+  border: none;
+  background-color: #ff9900;
+  color: white;
+}

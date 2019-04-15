@@ -1,0 +1,12 @@
+<header xmlns:th="http://www.thymeleaf.org">
+  <span id="date" th:utext="${datetime}"></span>
+  <div class="search">
+    <form method="POST" action="#" th:action="@{/search}" >
+      <button type="submit">
+        <i class="fas fa-search" style="color: #bbb;"></i>
+      </button>
+      <input type="text" name="search" placeholder="Search"/>
+    </form>
+  </div>
+  <a class="login" th:href="@{/login}">Log in</a>
+</header>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Article</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+    integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous" />
+  <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
+  <link rel="stylesheet" type="text/css" th:href="@{/css/article.css}" />
+</head>
+
+<body>
+  <div class="header">
+    <div class="content">
+      <th:block th:include="/header2"></th:block>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="content">
+      <main>
+        <th:block th:include="/logo"></th:block>
+        
+        <div id="container">
+          <p>List of articles</p>
+          <a th:href="@{/admin/add}" class="add-button"> Add article </a>
+          <table>
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Create date</th>
+                <th>Author</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="article : ${articles}">
+                <td><p class="article-title" th:utext="${article.title}"></p></td>
+                <td><p class="article-date" th:utext="${article.date}"></p></td>
+                <td><p class="article-author" th:utext="${article.author}"></p></td>
+                <td>
+                  <span>
+                   <a th:href="@{/admin/delete?id=} + ${article.id}"><i class="far fa-trash-alt"></i></a> 
+                  </span>
+                  <span>
+                    <a th:href="@{/admin/edit?id=} + ${article.id}"><i class="far fa-edit"></i></a>
+                  </span>
+                </td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+  </div>
+</body>
+
+</html>

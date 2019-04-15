@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Login</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/login.css}" />
+</head>
+
+<body>
+  <div id="login">
+    <th:block th:include="/logo"></th:block>
+
+    <div id="login-form">
+      <form th:action="@{/j_spring_security_login}" method='POST'>
+        Username
+        <br>
+        <input type="text" name="username" required>
+        <br>
+        <br>
+        Password
+        <br>
+        <input type="password" name="password" required>
+        <br><br>
+        <input type="submit" value="Login">
+         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>
